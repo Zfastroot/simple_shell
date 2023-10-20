@@ -2,16 +2,16 @@
 
 /**
  * bfree - frees a pointer and NULLs the address
- * @memoire: address of the pointer to free
+ * @str: address of the pointer to free
  *
  * Return: 1 if freed, otherwise 0.
  */
-int bfree(void **memoire)
+int bfree(void **str)
 {
-	if (memoire && *memoire)
+	if (str && *str)
 	{
-		free(*memoire);
-		*memoire = NULL;
+		free(*str);
+		*str = NULL;
 		return (1);
 	}
 	return (0);
