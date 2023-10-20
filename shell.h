@@ -60,7 +60,7 @@ typedef struct strlist
  *@line_count: the error count
  *@err_num: the error code for exit()s
  *@linecount_flag: if on count this line of input
- *@fname: the program filename
+ *@prname: the program filename
  *@env: linked list local copy of environ
  *@environ: custom modified copy of environ from LL env
  *@history: the history node
@@ -70,7 +70,7 @@ typedef struct strlist
  *@cmd_buf: address of pointer to cmd_buf, on if chaining
  *@cmd_buf_type: CMD_type ||, &&, ;
  *@readfd: the fd from which to read line input
- *@histcount: the history line number count
+ *@counthisto: the history line number count
  */
 typedef struct passinfo
 {
@@ -81,7 +81,7 @@ typedef struct passinfo
 	unsigned int line_count;
 	int err_num;
 	int linecount_flag;
-	char *fname;
+	char *prname;
 	list_t *env;
 	list_t *history;
 	list_t *alias;
@@ -92,7 +92,7 @@ typedef struct passinfo
 	char **cmd_buf; /* pointer to cmd ; chain buffer, for memory mangement */
 	int cmd_buf_type; /* CMD_type ||, &&, ; */
 	int readfd;
-	int histcount;
+	int counthisto;
 } info_t;
 
 #define INFO_INIT \
@@ -114,8 +114,8 @@ typedef struct builtin
 /* toem_shloop.c */
 int hsh(info_t *, char **);
 int find_builtin(info_t *);
-void find_cmd(info_t *);
-void fork_cmd(info_t *);
+void find_command(info_t *);
+void fork_command(info_t *);
 
 /* toem_parser.c */
 int is_cmd(info_t *, char *);
@@ -150,7 +150,7 @@ char *_strchr(char *, char);
 
 /* toem_tokenizer.c */
 char **strtow(char *, char *);
-char **strtow2(char *, char);
+char **strtoww(char *, char);
 
 /* toem_realloc.c */
 char *_memset(char *, char, unsigned int);
@@ -167,7 +167,7 @@ int _isalpha(int);
 int _atoi(char *);
 
 /* toem_errors1.c */
-int _erratoi(char *);
+int _erroratoi(char *);
 void print_error(info_t *, char *);
 int print_d(int, int);
 char *convert_number(long int, int, int);

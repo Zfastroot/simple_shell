@@ -49,12 +49,12 @@ char **strtow(char *str, char *dilim)
 }
 
 /**
- * **strtow2 - splits a string into words
+ * **strtoww - splits a string into words
  * @str: the input string
  * @dilim: the delimeter
  * Return: a pointer to an array of strings, or NULL on failure
  */
-char **strtow2(char *str, char dilim)
+char **strtoww(char *str, char dilim)
 {
 	int i, j, k, m, numwords = 0;
 	char **s;

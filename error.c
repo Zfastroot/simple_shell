@@ -86,12 +86,12 @@ int _putsfd(char *str, int fd)
 
 
 /**
- * _erratoi - converts a string to an integer
+ * _erroratoi - converts a string to an integer
  * @s: the string to be converted
  * Return: 0 if no numbers in string, converted number otherwise
  *       -1 on error
  */
-int _erratoi(char *s)
+int _erroratoi(char *s)
 {
 	int i = 0;
 	unsigned long int result = 0;
@@ -122,7 +122,7 @@ int _erratoi(char *s)
  */
 void print_error(info_t *info, char *estr)
 {
-	_eputs(info->fname);
+	_eputs(info->prname);
 	_eputs(": ");
 	print_d(info->line_count, STDERR_FILENO);
 	_eputs(": ");
